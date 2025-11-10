@@ -62,14 +62,21 @@ export default function FriendsMessagesPage() {
             </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-serif font-bold text-gray-800 mb-4">
+          <h1 className="text-4xl sm:text-5xl font-sans font-bold text-gray-800 mb-4">
             Birthday Wishes
             <br />
             <span className="text-sakura-600">From Friends</span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
             Messages from friends who love and celebrate you, Stella!
           </p>
+
+          <a
+            href="/friends/submit"
+            className="inline-block px-6 py-3 bg-sakura-500 text-white rounded-lg font-semibold hover:bg-sakura-600 transition-colors shadow-md hover:shadow-lg"
+          >
+            Add a Message for Stella
+          </a>
 
           {!loading && messages.length > 0 && (
             <div className="mt-6">
@@ -96,7 +103,7 @@ export default function FriendsMessagesPage() {
           <Card className="border-2 border-sakura-200 shadow-lg">
             <CardBody className="text-center py-16 px-8">
               <Heart className="w-16 h-16 text-sakura-300 mx-auto mb-4" />
-              <h2 className="text-2xl font-serif font-bold text-gray-800 mb-3">
+              <h2 className="text-2xl font-sans font-bold text-gray-800 mb-3">
                 No Messages Yet
               </h2>
               <p className="text-gray-600 mb-6">
@@ -123,7 +130,7 @@ export default function FriendsMessagesPage() {
                       <Heart className="w-5 h-5 text-white fill-white" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-serif font-bold text-lg text-gray-800 truncate">
+                      <h3 className="font-sans font-bold text-lg text-gray-800 truncate">
                         {msg.name}
                       </h3>
                       <p className="text-xs text-gray-500">

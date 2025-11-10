@@ -175,7 +175,7 @@ export default function BirthdayHearts() {
           </div>
 
           <div className="bg-white rounded-2xl shadow-lg border-2 border-sakura-100 p-8 sm:p-10 max-w-3xl mx-auto mb-8">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-800 mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-sans font-bold text-gray-800 mb-4">
               16 Reasons Why
               <br />
               <span className="text-sakura-600">I Love You</span>
@@ -191,7 +191,7 @@ export default function BirthdayHearts() {
                 <div className="inline-block px-6 py-3 bg-sakura-500 text-white rounded-full font-semibold text-lg shadow-md">
                   All messages unlocked! 🎉
                 </div>
-                <p className="text-xl text-sakura-600 font-serif font-semibold">
+                <p className="text-xl text-sakura-600 font-sans font-semibold">
                   We love you so much, Stella ♡
                 </p>
               </div>
