@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardBody, CardHeader, Input, Textarea, Button } from '@heroui/react';
+import { Card, CardBody, CardHeader, Button } from '@heroui/react';
 import { Heart, Send, CheckCircle2 } from 'lucide-react';
 import NavigationBar from '../../components/Navbar';
 
@@ -106,39 +106,35 @@ export default function FriendsSubmitPage() {
             </CardHeader>
             <CardBody className="p-6">
               <form onSubmit={handleSubmit} className="space-y-6">
-                <Input
-                  label="Your Name"
-                  placeholder="Enter your name"
-                  value={name}
-                  onValueChange={setName}
-                  required
-                  variant="bordered"
-                  labelPlacement="outside"
-                  size="lg"
-                  radius="md"
-                  classNames={{
-                    label: "text-sm font-semibold text-gray-700 pb-1",
-                    inputWrapper: "border-2 border-gray-300 hover:border-sakura-400 data-[focus=true]:border-sakura-500 shadow-none",
-                    input: "text-base"
-                  }}
-                />
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Your Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="Enter your name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    className="w-full h-12 px-4 text-base bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-sakura-500 hover:border-sakura-400 transition-colors"
+                  />
+                </div>
 
-                <Textarea
-                  label="Your Message"
-                  placeholder="Write a heartfelt birthday message for Stella..."
-                  value={message}
-                  onValueChange={setMessage}
-                  required
-                  variant="bordered"
-                  labelPlacement="outside"
-                  minRows={8}
-                  radius="md"
-                  classNames={{
-                    label: "text-sm font-semibold text-gray-700 pb-1",
-                    inputWrapper: "border-2 border-gray-300 hover:border-sakura-400 data-[focus=true]:border-sakura-500 shadow-none",
-                    input: "text-base py-3"
-                  }}
-                />
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Your Message
+                  </label>
+                  <textarea
+                    id="message"
+                    placeholder="Write a heartfelt birthday message for Stella..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
+                    rows={8}
+                    className="w-full px-4 py-3 text-base bg-white border-2 border-gray-300 rounded-lg resize-none focus:outline-none focus:border-sakura-500 hover:border-sakura-400 transition-colors"
+                  />
+                </div>
 
                 {error && (
                   <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
