@@ -134,9 +134,10 @@ export default function FriendsSubmitPage() {
                     required
                     minRows={6}
                     classNames={{
-                      input: "text-base p-3",
-                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 !shadow-none !outline-none rounded-lg",
-                      base: "w-full"
+                      base: "w-full",
+                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 !shadow-none rounded-lg p-0",
+                      innerWrapper: "pb-0",
+                      input: "text-base py-3 px-3 resize-none"
                     }}
                   />
                 </div>
