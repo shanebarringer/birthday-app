@@ -115,7 +115,7 @@ const EnvelopeCard = ({ number, message, isOpen, onOpen }) => {
               <span className="text-xs md:text-sm font-bold text-white">{number}</span>
             </div>
 
-            <p className="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-center font-normal relative z-10 px-1 md:px-2">
+            <p className="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-center font-normal relative z-10 px-2 sm:px-3 md:px-4 pt-2">
               {message}
             </p>
           </CardBody>
