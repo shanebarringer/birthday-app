@@ -136,8 +136,9 @@ export default function FriendsSubmitPage() {
                     size="lg"
                     classNames={{
                       input: "text-base p-3",
-                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500",
-                      base: "w-full"
+                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 rounded-lg",
+                      base: "w-full",
+                      innerWrapper: "pb-0"
                     }}
                   />
                 </div>
