@@ -90,7 +90,7 @@ const EnvelopeCard = ({ number, message, isOpen, onOpen }) => {
         }`}
       >
         <Card className="w-full h-full bg-sakura-500 shadow-2xl border-2 border-sakura-600">
-          <CardBody className="flex items-center justify-center p-5 sm:p-6 relative overflow-hidden">
+          <CardBody className="flex items-center justify-center p-5 sm:p-6 md:p-8 lg:p-10 relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 opacity-10">
               <svg className="absolute top-0 right-0 w-20 h-20 text-white" viewBox="0 0 100 100">
@@ -101,21 +101,21 @@ const EnvelopeCard = ({ number, message, isOpen, onOpen }) => {
               </svg>
             </div>
 
-            <Heart className="absolute top-3 right-3 w-6 h-6 text-white/80 fill-white/80 animate-pulse" />
+            <Heart className="absolute top-4 right-4 md:top-5 md:right-5 w-6 h-6 md:w-7 md:h-7 text-white/80 fill-white/80 animate-pulse" />
 
             {/* Cherry blossom decoration on heart card */}
-            <div className="absolute bottom-3 left-3 text-white/40">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <div className="absolute bottom-4 left-4 md:bottom-5 md:left-5 text-white/40">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="md:w-6 md:h-6">
                 <path d="M12 2C11.5 2 11 2.19 10.59 2.59L12 4L13.41 2.59C13 2.19 12.5 2 12 2M16.95 5.54C16.5 5.77 16 6.13 15.54 6.59L17 8.05L18.46 6.59C18 6.13 17.5 5.77 17.05 5.54M7.05 5.54C6.5 5.77 6 6.13 5.54 6.59L7 8.05L8.46 6.59C8 6.13 7.5 5.77 7.05 5.54M12 22C11.5 22 11 21.81 10.59 21.41L12 20L13.41 21.41C13 21.81 12.5 22 12 22M16.95 18.46C16.5 18.23 16 17.87 15.54 17.41L17 15.95L18.46 17.41C18 17.87 17.5 18.23 17.05 18.46M7.05 18.46C6.5 18.23 6 17.87 5.54 17.41L7 15.95L8.46 17.41C8 17.87 7.5 18.23 7.05 18.46M22 12C22 11.5 21.81 11 21.41 10.59L20 12L21.41 13.41C21.81 13 22 12.5 22 12M2 12C2 11.5 2.19 11 2.59 10.59L4 12L2.59 13.41C2.19 13 2 12.5 2 12Z" />
               </svg>
             </div>
 
             {/* Number badge on heart */}
-            <div className="absolute top-3 left-3 w-7 h-7 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-              <span className="text-xs font-bold text-white">{number}</span>
+            <div className="absolute top-4 left-4 md:top-5 md:left-5 w-7 h-7 md:w-8 md:h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+              <span className="text-xs md:text-sm font-bold text-white">{number}</span>
             </div>
 
-            <p className="text-white text-xs sm:text-sm leading-relaxed text-center font-normal relative z-10 px-1">
+            <p className="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-center font-normal relative z-10 px-1 md:px-2">
               {message}
             </p>
           </CardBody>
