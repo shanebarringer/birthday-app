@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardBody, CardHeader, Input, Textarea, Button } from '@heroui/react';
+import { Card, CardBody, CardHeader, Input, Button } from '@heroui/react';
 import { Heart, Send, CheckCircle2 } from 'lucide-react';
 import NavigationBar from '../../components/Navbar';
 
@@ -117,8 +117,8 @@ export default function FriendsSubmitPage() {
                     required
                     size="lg"
                     classNames={{
-                      input: "text-base px-3",
-                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 shadow-none"
+                      input: "text-base px-3 py-3",
+                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 shadow-none h-12"
                     }}
                   />
                 </div>
@@ -127,18 +127,13 @@ export default function FriendsSubmitPage() {
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Your Message
                   </label>
-                  <Textarea
+                  <textarea
                     placeholder="Write a heartfelt birthday message for Stella..."
                     value={message}
-                    onValueChange={setMessage}
+                    onChange={(e) => setMessage(e.target.value)}
                     required
-                    minRows={6}
-                    classNames={{
-                      base: "w-full",
-                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 !shadow-none rounded-lg p-0",
-                      innerWrapper: "pb-0",
-                      input: "text-base py-3 px-3 resize-none"
-                    }}
+                    rows={6}
+                    className="w-full px-4 py-3 text-base border-2 border-gray-200 rounded-lg resize-none focus:outline-none focus:border-sakura-500 hover:border-sakura-300 transition-colors"
                   />
                 </div>
 
