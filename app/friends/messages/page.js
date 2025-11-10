@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Card, CardBody, Spinner, Chip } from '@heroui/react';
 import { Heart, Users } from 'lucide-react';
 import NavigationBar from '../../components/Navbar';
@@ -9,13 +9,15 @@ export default function FriendsMessagesPage() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchMessages();
-  }, []);
-
-  const fetchMessages = async () => {
+  const fetchMessages = useCallback(async () => {
+    setLoading(true);
     try {
-      const response = await fetch('/api/messages/approved');
+      const response = await fetch('/api/messages/approved', {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache',
+        },
+      });
       if (response.ok) {
         const data = await response.json();
         setMessages(data.messages);
@@ -25,7 +27,32 @@ export default function FriendsMessagesPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchMessages();
+
+    // Refetch when page becomes visible (e.g., when navigating back to this page)
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        fetchMessages();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Refetch when window regains focus
+    const handleFocus = () => {
+      fetchMessages();
+    };
+
+    window.addEventListener('focus', handleFocus);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, [fetchMessages]);
 
   return (
     <div className="min-h-screen bg-sakura-50/30 relative overflow-hidden">
