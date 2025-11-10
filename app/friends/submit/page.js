@@ -72,7 +72,7 @@ export default function FriendsSubmitPage() {
             <br />
             <span className="text-sakura-600">to Stella</span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             Share a message for Stella's Sweet 16! Your message will appear immediately on her special birthday page.
           </p>
         </div>
@@ -117,7 +117,7 @@ export default function FriendsSubmitPage() {
                     required
                     size="lg"
                     classNames={{
-                      input: "text-base",
+                      input: "text-base px-3",
                       inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500"
                     }}
                   />
@@ -135,8 +135,9 @@ export default function FriendsSubmitPage() {
                     minRows={6}
                     size="lg"
                     classNames={{
-                      input: "text-base",
-                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500"
+                      input: "text-base p-3",
+                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500",
+                      base: "w-full"
                     }}
                   />
                 </div>

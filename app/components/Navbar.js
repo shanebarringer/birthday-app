@@ -33,21 +33,20 @@ export default function NavigationBar() {
         </Link>
       </NavbarBrand>
 
-      <NavbarContent justify="end" className="gap-3">
+      <NavbarContent justify="end" className="gap-2 sm:gap-3">
         <NavbarItem>
           <Link href="/">
             <Chip
               startContent={<Sparkles className="w-3.5 h-3.5 flex-shrink-0" />}
               variant="flat"
               color="default"
-              size="lg"
               classNames={{
-                base: `border-2 px-3 py-1.5 h-auto cursor-pointer transition-all ${
+                base: `border-2 px-2 sm:px-3 py-1.5 h-auto cursor-pointer transition-all ${
                   !isFriendsPage
                     ? 'bg-sakura-100 border-sakura-200'
                     : 'bg-white border-gray-200 hover:border-sakura-200'
                 }`,
-                content: `font-semibold text-sm px-1 ${
+                content: `font-semibold text-xs sm:text-sm px-0.5 sm:px-1 whitespace-nowrap ${
                   !isFriendsPage ? 'text-sakura-700' : 'text-gray-500'
                 }`
               }}
@@ -63,14 +62,13 @@ export default function NavigationBar() {
               startContent={<Users className="w-3.5 h-3.5 flex-shrink-0" />}
               variant="flat"
               color="default"
-              size="lg"
               classNames={{
-                base: `border-2 px-3 py-1.5 h-auto cursor-pointer transition-all ${
+                base: `border-2 px-2 sm:px-3 py-1.5 h-auto cursor-pointer transition-all ${
                   isFriendsPage
                     ? 'bg-sakura-100 border-sakura-200'
                     : 'bg-white border-gray-200 hover:border-sakura-200'
                 }`,
-                content: `font-semibold text-sm px-1 ${
+                content: `font-semibold text-xs sm:text-sm px-0.5 sm:px-1 whitespace-nowrap ${
                   isFriendsPage ? 'text-sakura-700' : 'text-gray-500'
                 }`
               }}
