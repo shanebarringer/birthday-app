@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardBody, CardHeader, Input, Button } from '@heroui/react';
+import { Card, CardBody, CardHeader, Button } from '@heroui/react';
 import { Heart, Send, CheckCircle2 } from 'lucide-react';
 import NavigationBar from '../../components/Navbar';
 
@@ -110,16 +110,13 @@ export default function FriendsSubmitPage() {
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Your Name
                   </label>
-                  <Input
+                  <input
+                    type="text"
                     placeholder="Enter your name"
                     value={name}
-                    onValueChange={setName}
+                    onChange={(e) => setName(e.target.value)}
                     required
-                    size="lg"
-                    classNames={{
-                      input: "text-base px-3 py-3",
-                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 shadow-none h-12"
-                    }}
+                    className="w-full h-12 px-4 text-base border-2 border-gray-200 rounded-lg focus:outline-none focus:border-sakura-500 hover:border-sakura-300 transition-colors"
                   />
                 </div>
 
