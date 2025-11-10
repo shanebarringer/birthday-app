@@ -117,7 +117,7 @@ export default function FriendsSubmitPage() {
                     required
                     size="lg"
                     classNames={{
-                      input: "text-base",
+                      input: "text-base px-4 py-3",
                       inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 !shadow-none h-12"
                     }}
                   />
@@ -133,11 +133,11 @@ export default function FriendsSubmitPage() {
                     onValueChange={setMessage}
                     required
                     minRows={6}
+                    disableAnimation
                     classNames={{
                       base: "w-full",
-                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 !shadow-none !pb-3",
-                      innerWrapper: "pb-2",
-                      input: "text-base pt-3 px-3 pb-3"
+                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 !shadow-none rounded-lg",
+                      input: "text-base resize-none px-4 py-3"
                     }}
                   />
                 </div>
