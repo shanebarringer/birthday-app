@@ -24,7 +24,7 @@ export default function NavigationBar() {
               <Heart className="w-6 h-6 text-white fill-white" />
             </div>
             <div className="flex flex-col">
-              <p className="font-serif font-bold text-xl text-gray-800 leading-tight">
+              <p className="font-sans font-bold text-xl text-gray-800 leading-tight">
                 Happy Sweet 16 Stella!
               </p>
               <p className="text-xs text-gray-500 font-medium">Birthday Messages</p>
@@ -63,12 +63,12 @@ export default function NavigationBar() {
               variant="flat"
               color="default"
               classNames={{
-                base: `border-2 px-2 sm:px-3 py-1.5 h-auto cursor-pointer transition-all ${
+                base: `border-2 px-1.5 sm:px-3 py-1.5 h-auto cursor-pointer transition-all ${
                   isFriendsPage
                     ? 'bg-sakura-100 border-sakura-200'
                     : 'bg-white border-gray-200 hover:border-sakura-200'
                 }`,
-                content: `font-semibold text-xs sm:text-sm px-0.5 sm:px-1 whitespace-nowrap ${
+                content: `font-semibold text-xs sm:text-sm whitespace-nowrap ${
                   isFriendsPage ? 'text-sakura-700' : 'text-gray-500'
                 }`
               }}

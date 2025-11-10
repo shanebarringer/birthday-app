@@ -67,7 +67,7 @@ export default function FriendsSubmitPage() {
             </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-serif font-bold text-gray-800 mb-4">
+          <h1 className="text-4xl sm:text-5xl font-sans font-bold text-gray-800 mb-4">
             Send Birthday Wishes
             <br />
             <span className="text-sakura-600">to Stella</span>
@@ -80,7 +80,7 @@ export default function FriendsSubmitPage() {
         {/* Submission Form */}
         <Card className="border-2 border-sakura-200 shadow-xl">
             <CardHeader className="flex-col items-start px-6 pt-6 pb-4 border-b-2 border-sakura-100">
-              <h2 className="text-xl font-serif font-bold text-gray-800">Your Birthday Message</h2>
+              <h2 className="text-xl font-sans font-bold text-gray-800">Your Birthday Message</h2>
               <p className="text-sm text-gray-500">Fill out the form below to send your wishes</p>
             </CardHeader>
             <CardBody className="p-6">
@@ -137,7 +137,7 @@ export default function FriendsSubmitPage() {
 
         {/* Info Box */}
         <div className="mt-8 bg-white rounded-xl border-2 border-sakura-100 p-6 shadow-md">
-          <h3 className="font-serif font-bold text-gray-800 mb-2">💝 A few notes:</h3>
+          <h3 className="font-sans font-bold text-gray-800 mb-2">💝 A few notes:</h3>
           <ul className="text-sm text-gray-600 space-y-2">
             <li>• Your message will appear immediately on Stella's birthday page</li>
             <li>• Please keep messages positive and heartfelt</li>
