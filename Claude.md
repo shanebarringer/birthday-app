@@ -36,21 +36,24 @@ An interactive birthday card web app for a 16-year-old daughter, featuring 16 he
 
 ## Tech Stack
 
-### Current (v1.0)
+### Current (v2.0)
 - **Framework:** Next.js 14 (App Router)
 - **Package Manager:** pnpm
 - **UI:** React 18 + Tailwind CSS
+- **Component Library:** HeroUI (formerly NextUI)
 - **Icons:** Lucide React
+- **Fonts:** Inter (body), Playfair Display (headings)
+- **Animations:** Framer Motion
 - **Hosting:** Vercel
 
-### Future (v2.0+)
-- **UI Library:** NextUI (React components)
+### Future (v3.0+)
 - **Database:** Neon (Serverless Postgres)
 - **ORM:** Prisma (planned)
+- **Auth:** Simple password protection for admin
 
 ## Project Roadmap
 
-### Phase 1: Launch (Current) ✅
+### Phase 1: Launch ✅
 **Goal:** Get the app live quickly with current functionality
 
 - [x] Create Claude.md documentation
@@ -58,7 +61,7 @@ An interactive birthday card web app for a 16-year-old daughter, featuring 16 he
 - [x] Quick styling polish
 - [x] Vercel deployment setup
 
-### Phase 2: Japanese Minimal Redesign 🌸
+### Phase 2: Japanese Minimal Redesign ✅
 **Goal:** Beautiful, age-appropriate aesthetic with Japanese influences
 
 **Design Theme:** Japanese Minimal
@@ -69,13 +72,13 @@ An interactive birthday card web app for a 16-year-old daughter, featuring 16 he
 - Smooth, subtle animations
 
 **Tasks:**
-- [ ] Install and configure NextUI
-- [ ] Create custom design system (colors, spacing, typography)
-- [ ] Design and implement minimal navbar
-- [ ] Redesign envelope/heart cards with cherry blossom theme
-- [ ] Improve mobile responsiveness
-- [ ] Add subtle animations and transitions
-- [ ] Consider custom fonts (Japanese-inspired or modern clean)
+- [x] Install and configure HeroUI (formerly NextUI)
+- [x] Create custom design system (sakura color palette, custom fonts)
+- [x] Design and implement minimal navbar
+- [x] Redesign envelope/heart cards with cherry blossom theme
+- [x] Improve mobile responsiveness (responsive grid)
+- [x] Add subtle animations and transitions (rotation, scale effects)
+- [x] Add custom fonts (Inter for body, Playfair Display for headings)
 
 ### Phase 3: Friends Contribution Feature 💬
 **Goal:** Allow friends to submit birthday wishes
@@ -195,5 +198,32 @@ git push origin main  # Auto-deploys via Vercel
 
 ---
 
+## Design Implementation Details (Phase 2)
+
+### Color Palette
+- **Sakura Pink Scale:** Custom 50-700 range (#FFF5F7 to #CC7189)
+- **Background:** Pure white for clean minimal look
+- **Text:** Gray-800 for primary, Gray-600/500 for secondary
+- **Accents:** Sakura-500 (#FF8FAB) for interactive elements
+
+### Typography
+- **Headings:** Playfair Display (serif, elegant, bold)
+- **Body:** Inter (sans-serif, clean, modern)
+- **Responsive:** 5xl-6xl for main title, scales down on mobile
+
+### Components
+- **Navbar:** Glass morphism effect with backdrop blur, minimal border
+- **Cards:** HeroUI Card components with custom border styling
+- **Animations:** Rotate + scale transitions on card flip (500ms duration)
+- **Cherry Blossoms:** SVG decorations on cards for Japanese aesthetic
+
+### Responsive Breakpoints
+- **Mobile (default):** 2 columns
+- **Tablet (sm:):** 3 columns
+- **Desktop (lg:):** 4 columns
+- All spacing and text sizes adjust accordingly
+
+---
+
 **Last Updated:** November 2025
-**Version:** 1.0 (Phase 1)
+**Version:** 2.0 (Phase 2 Complete)
