@@ -12,10 +12,15 @@ function FriendsMessagesContent() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Convert searchParams to string for stable comparison
+  const searchParamsString = searchParams.toString();
+
   const fetchMessages = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/messages/approved', {
+      // Add timestamp to prevent any caching
+      const timestamp = new Date().getTime();
+      const response = await fetch(`/api/messages/approved?t=${timestamp}`, {
         cache: 'no-store',
         headers: {
           'Cache-Control': 'no-cache',
@@ -23,7 +28,10 @@ function FriendsMessagesContent() {
       });
       if (response.ok) {
         const data = await response.json();
+        console.log('Fetched messages:', data.messages?.length, 'messages');
         setMessages(data.messages);
+      } else {
+        console.error('Failed to fetch messages, status:', response.status);
       }
     } catch (error) {
       console.error('Failed to fetch messages:', error);
@@ -35,7 +43,7 @@ function FriendsMessagesContent() {
   // Refetch data whenever the pathname or search params change (navigation)
   useEffect(() => {
     fetchMessages();
-  }, [pathname, searchParams, fetchMessages]);
+  }, [pathname, searchParamsString, fetchMessages]);
 
   // Also refetch when page becomes visible or gains focus
   useEffect(() => {
