@@ -73,7 +73,7 @@ export default function FriendsSubmitPage() {
             <span className="text-sakura-600">to Stella</span>
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Share a message for Stella's Sweet 16! Your message will be reviewed and added to her special birthday page.
+            Share a message for Stella's Sweet 16! Your message will appear immediately on her special birthday page.
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export default function FriendsSubmitPage() {
                 Message Sent! 🎉
               </h2>
               <p className="text-gray-600 mb-6">
-                Thank you for your birthday wishes! Your message has been submitted and will appear once approved.
+                Thank you for your birthday wishes! Your message is now live on Stella's birthday page.
               </p>
               <Button
                 color="default"
@@ -158,9 +158,9 @@ export default function FriendsSubmitPage() {
         <div className="mt-8 bg-white rounded-xl border-2 border-sakura-100 p-6 shadow-md">
           <h3 className="font-serif font-bold text-gray-800 mb-2">💝 A few notes:</h3>
           <ul className="text-sm text-gray-600 space-y-2">
-            <li>• Your message will be reviewed before being added to Stella's birthday page</li>
-            <li>• Please keep messages positive and appropriate</li>
-            <li>• Messages typically appear within 24 hours of submission</li>
+            <li>• Your message will appear immediately on Stella's birthday page</li>
+            <li>• Please keep messages positive and heartfelt</li>
+            <li>• You can submit multiple messages if you'd like!</li>
           </ul>
         </div>
       </main>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Card, CardBody, CardHeader, Button, Input, Chip, Spinner } from '@heroui/react';
-import { Lock, CheckCircle2, XCircle, Clock, Trash2 } from 'lucide-react';
+import { Lock, CheckCircle2, Trash2 } from 'lucide-react';
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -52,25 +52,6 @@ export default function AdminPage() {
       console.error('Failed to fetch messages:', error);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleAction = async (id, action) => {
-    setActionLoading(id);
-    try {
-      const response = await fetch('/api/admin/messages', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, action }),
-      });
-
-      if (response.ok) {
-        await fetchMessages();
-      }
-    } catch (error) {
-      console.error('Action failed:', error);
-    } finally {
-      setActionLoading(null);
     }
   };
 
@@ -144,17 +125,14 @@ export default function AdminPage() {
     );
   }
 
-  const pendingMessages = messages.filter(m => !m.approved);
-  const approvedMessages = messages.filter(m => m.approved);
-
   return (
     <div className="min-h-screen bg-sakura-50/30 py-8 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-serif font-bold text-gray-800 mb-2">
-            Message Moderation
+            Friend Messages
           </h1>
-          <p className="text-gray-600">Review and approve birthday messages for Stella</p>
+          <p className="text-gray-600">View and manage birthday messages for Stella</p>
         </div>
 
         {loading ? (
@@ -162,129 +140,56 @@ export default function AdminPage() {
             <Spinner size="lg" color="default" />
           </div>
         ) : (
-          <div className="space-y-8">
-            {/* Pending Messages */}
-            <section>
-              <div className="flex items-center gap-3 mb-4">
-                <Clock className="w-5 h-5 text-orange-500" />
+          <section>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-5 h-5 text-sakura-500" />
                 <h2 className="text-xl font-serif font-bold text-gray-800">
-                  Pending Approval ({pendingMessages.length})
+                  All Messages ({messages.length})
                 </h2>
               </div>
+            </div>
 
-              {pendingMessages.length === 0 ? (
-                <Card className="border-2 border-gray-200">
-                  <CardBody className="text-center py-12">
-                    <p className="text-gray-500">No pending messages</p>
-                  </CardBody>
-                </Card>
-              ) : (
-                <div className="grid gap-4">
-                  {pendingMessages.map((msg) => (
-                    <Card key={msg.id} className="border-2 border-orange-200 shadow-md">
-                      <CardBody className="p-6">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-2">
-                              <h3 className="font-semibold text-gray-800">{msg.name}</h3>
-                              <Chip size="sm" variant="flat" color="warning">Pending</Chip>
-                            </div>
-                            <p className="text-gray-700 mb-3 whitespace-pre-wrap">{msg.message}</p>
-                            <p className="text-xs text-gray-500">
-                              Submitted {new Date(msg.createdAt).toLocaleString()}
-                            </p>
+            {messages.length === 0 ? (
+              <Card className="border-2 border-gray-200">
+                <CardBody className="text-center py-12">
+                  <p className="text-gray-500">No messages yet</p>
+                </CardBody>
+              </Card>
+            ) : (
+              <div className="grid gap-4">
+                {messages.map((msg) => (
+                  <Card key={msg.id} className="border-2 border-sakura-200 shadow-md hover:shadow-lg transition-shadow">
+                    <CardBody className="p-6">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <h3 className="font-semibold text-gray-800 text-lg">{msg.name}</h3>
                           </div>
-                          <div className="flex flex-col gap-2">
-                            <Button
-                              size="sm"
-                              color="success"
-                              variant="flat"
-                              isLoading={actionLoading === msg.id}
-                              onPress={() => handleAction(msg.id, 'approve')}
-                              startContent={<CheckCircle2 className="w-4 h-4" />}
-                            >
-                              Approve
-                            </Button>
-                            <Button
-                              size="sm"
-                              color="danger"
-                              variant="flat"
-                              isLoading={actionLoading === msg.id}
-                              onPress={() => handleDelete(msg.id)}
-                              startContent={<Trash2 className="w-4 h-4" />}
-                            >
-                              Delete
-                            </Button>
-                          </div>
+                          <p className="text-gray-700 mb-3 whitespace-pre-wrap leading-relaxed">{msg.message}</p>
+                          <p className="text-xs text-gray-500">
+                            Submitted {new Date(msg.createdAt).toLocaleString()}
+                          </p>
                         </div>
-                      </CardBody>
-                    </Card>
-                  ))}
-                </div>
-              )}
-            </section>
-
-            {/* Approved Messages */}
-            <section>
-              <div className="flex items-center gap-3 mb-4">
-                <CheckCircle2 className="w-5 h-5 text-green-500" />
-                <h2 className="text-xl font-serif font-bold text-gray-800">
-                  Approved Messages ({approvedMessages.length})
-                </h2>
+                        <div>
+                          <Button
+                            size="sm"
+                            color="danger"
+                            variant="flat"
+                            isLoading={actionLoading === msg.id}
+                            onPress={() => handleDelete(msg.id)}
+                            startContent={<Trash2 className="w-4 h-4" />}
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      </div>
+                    </CardBody>
+                  </Card>
+                ))}
               </div>
-
-              {approvedMessages.length === 0 ? (
-                <Card className="border-2 border-gray-200">
-                  <CardBody className="text-center py-12">
-                    <p className="text-gray-500">No approved messages yet</p>
-                  </CardBody>
-                </Card>
-              ) : (
-                <div className="grid gap-4">
-                  {approvedMessages.map((msg) => (
-                    <Card key={msg.id} className="border-2 border-green-200 shadow-md">
-                      <CardBody className="p-6">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-2">
-                              <h3 className="font-semibold text-gray-800">{msg.name}</h3>
-                              <Chip size="sm" variant="flat" color="success">Approved</Chip>
-                            </div>
-                            <p className="text-gray-700 mb-3 whitespace-pre-wrap">{msg.message}</p>
-                            <p className="text-xs text-gray-500">
-                              Approved {new Date(msg.approvedAt).toLocaleString()}
-                            </p>
-                          </div>
-                          <div className="flex flex-col gap-2">
-                            <Button
-                              size="sm"
-                              color="warning"
-                              variant="flat"
-                              isLoading={actionLoading === msg.id}
-                              onPress={() => handleAction(msg.id, 'unapprove')}
-                              startContent={<XCircle className="w-4 h-4" />}
-                            >
-                              Unapprove
-                            </Button>
-                            <Button
-                              size="sm"
-                              color="danger"
-                              variant="flat"
-                              isLoading={actionLoading === msg.id}
-                              onPress={() => handleDelete(msg.id)}
-                              startContent={<Trash2 className="w-4 h-4" />}
-                            >
-                              Delete
-                            </Button>
-                          </div>
-                        </div>
-                      </CardBody>
-                    </Card>
-                  ))}
-                </div>
-              )}
-            </section>
-          </div>
+            )}
+          </section>
         )}
       </div>
     </div>

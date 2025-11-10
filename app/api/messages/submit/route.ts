@@ -29,11 +29,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insert into database
+    // Insert into database (auto-approved for close friends)
     const [newMessage] = await db.insert(friendMessages).values({
       name: name.trim(),
       message: message.trim(),
-      approved: false,
+      approved: true,
+      approvedAt: new Date(),
     }).returning();
 
     return NextResponse.json({
