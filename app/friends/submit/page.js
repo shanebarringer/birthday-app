@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardBody, CardHeader, Button } from '@heroui/react';
+import { Card, CardBody, CardHeader, Input, Textarea, Button } from '@heroui/react';
 import { Heart, Send, CheckCircle2 } from 'lucide-react';
 import NavigationBar from '../../components/Navbar';
 
@@ -110,13 +110,16 @@ export default function FriendsSubmitPage() {
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Your Name
                   </label>
-                  <input
-                    type="text"
+                  <Input
                     placeholder="Enter your name"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onValueChange={setName}
                     required
-                    className="w-full h-12 px-4 text-base border-2 border-gray-200 rounded-lg focus:outline-none focus:border-sakura-500 hover:border-sakura-300 transition-colors"
+                    size="lg"
+                    classNames={{
+                      input: "text-base",
+                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 !shadow-none h-12"
+                    }}
                   />
                 </div>
 
@@ -124,13 +127,18 @@ export default function FriendsSubmitPage() {
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Your Message
                   </label>
-                  <textarea
+                  <Textarea
                     placeholder="Write a heartfelt birthday message for Stella..."
                     value={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    onValueChange={setMessage}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 text-base border-2 border-gray-200 rounded-lg resize-none focus:outline-none focus:border-sakura-500 hover:border-sakura-300 transition-colors"
+                    minRows={6}
+                    classNames={{
+                      base: "w-full",
+                      inputWrapper: "border-2 border-gray-200 hover:border-sakura-300 focus-within:!border-sakura-500 !shadow-none !pb-3",
+                      innerWrapper: "pb-2",
+                      input: "text-base pt-3 px-3 pb-3"
+                    }}
                   />
                 </div>
 
