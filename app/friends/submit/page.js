@@ -106,44 +106,39 @@ export default function FriendsSubmitPage() {
             </CardHeader>
             <CardBody className="p-6">
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Your Name
-                  </label>
-                  <Input
-                    placeholder="Enter your name"
-                    value={name}
-                    onValueChange={setName}
-                    required
-                    variant="bordered"
-                    size="lg"
-                    classNames={{
-                      input: "text-base",
-                      inputWrapper: "!border-2 !border-gray-200 hover:!border-sakura-300 data-[focus=true]:!border-sakura-500 !shadow-none h-14 items-center",
-                      innerWrapper: "items-center"
-                    }}
-                  />
-                </div>
+                <Input
+                  label="Your Name"
+                  placeholder="Enter your name"
+                  value={name}
+                  onValueChange={setName}
+                  required
+                  variant="bordered"
+                  labelPlacement="outside"
+                  size="lg"
+                  radius="md"
+                  classNames={{
+                    label: "text-sm font-semibold text-gray-700 pb-1",
+                    inputWrapper: "border-2 border-gray-300 hover:border-sakura-400 data-[focus=true]:border-sakura-500 shadow-none",
+                    input: "text-base"
+                  }}
+                />
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Your Message
-                  </label>
-                  <Textarea
-                    placeholder="Write a heartfelt birthday message for Stella..."
-                    value={message}
-                    onValueChange={setMessage}
-                    required
-                    variant="bordered"
-                    minRows={8}
-                    disableAnimation
-                    classNames={{
-                      base: "w-full",
-                      inputWrapper: "!border-2 !border-gray-200 hover:!border-sakura-300 data-[focus=true]:!border-sakura-500 !shadow-none !outline-none",
-                      input: "text-base !outline-none focus:!outline-none"
-                    }}
-                  />
-                </div>
+                <Textarea
+                  label="Your Message"
+                  placeholder="Write a heartfelt birthday message for Stella..."
+                  value={message}
+                  onValueChange={setMessage}
+                  required
+                  variant="bordered"
+                  labelPlacement="outside"
+                  minRows={8}
+                  radius="md"
+                  classNames={{
+                    label: "text-sm font-semibold text-gray-700 pb-1",
+                    inputWrapper: "border-2 border-gray-300 hover:border-sakura-400 data-[focus=true]:border-sakura-500 shadow-none",
+                    input: "text-base py-3"
+                  }}
+                />
 
                 {error && (
                   <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
