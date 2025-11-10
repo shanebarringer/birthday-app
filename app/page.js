@@ -182,7 +182,7 @@ export default function BirthdayHearts() {
             </h1>
 
             {showTitle ? (
-              <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto mb-6">
+              <p className="text-base sm:text-xl text-gray-600 max-w-xl mx-auto mb-6">
                 Each envelope contains a heartfelt message just for you.
                 Click to open them and feel the love ♡
               </p>
