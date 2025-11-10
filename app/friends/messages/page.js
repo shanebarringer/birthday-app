@@ -1,70 +1,33 @@
 'use client';
 
-import { useState, useEffect, useCallback, Suspense } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { Card, CardBody, Spinner, Chip } from '@heroui/react';
 import { Heart, Users } from 'lucide-react';
 import NavigationBar from '../../components/Navbar';
 
-function FriendsMessagesContent() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+export default function FriendsMessagesPage() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Convert searchParams to string for stable comparison
-  const searchParamsString = searchParams.toString();
-
-  const fetchMessages = useCallback(async () => {
-    setLoading(true);
-    try {
-      // Add timestamp to prevent any caching
-      const timestamp = new Date().getTime();
-      const response = await fetch(`/api/messages/approved?t=${timestamp}`, {
-        cache: 'no-store',
-        headers: {
-          'Cache-Control': 'no-cache',
-        },
-      });
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Fetched messages:', data.messages?.length, 'messages');
-        setMessages(data.messages);
-      } else {
-        console.error('Failed to fetch messages, status:', response.status);
+  useEffect(() => {
+    async function loadMessages() {
+      try {
+        const response = await fetch('/api/messages/approved', {
+          cache: 'no-store'
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setMessages(data.messages || []);
+        }
+      } catch (error) {
+        console.error('Error loading messages:', error);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error('Failed to fetch messages:', error);
-    } finally {
-      setLoading(false);
     }
+
+    loadMessages();
   }, []);
-
-  // Refetch data whenever the pathname or search params change (navigation)
-  useEffect(() => {
-    fetchMessages();
-  }, [pathname, searchParamsString, fetchMessages]);
-
-  // Also refetch when page becomes visible or gains focus
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (!document.hidden) {
-        fetchMessages();
-      }
-    };
-
-    const handleFocus = () => {
-      fetchMessages();
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('focus', handleFocus);
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('focus', handleFocus);
-    };
-  }, [fetchMessages]);
 
   return (
     <div className="min-h-screen bg-sakura-50/30 relative overflow-hidden">
@@ -180,14 +143,3 @@ function FriendsMessagesContent() {
   );
 }
 
-export default function FriendsMessagesPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-sakura-50/30 flex items-center justify-center">
-        <Spinner size="lg" color="default" />
-      </div>
-    }>
-      <FriendsMessagesContent />
-    </Suspense>
-  );
-}
