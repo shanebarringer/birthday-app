@@ -1,15 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Card, CardBody, CardHeader, Button } from '@heroui/react';
-import { Heart, Send, CheckCircle2 } from 'lucide-react';
+import { Heart, Send } from 'lucide-react';
 import NavigationBar from '../../components/Navbar';
 
 export default function FriendsSubmitPage() {
+  const router = useRouter();
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
@@ -30,9 +31,8 @@ export default function FriendsSubmitPage() {
         throw new Error(data.error || 'Failed to submit message');
       }
 
-      setSubmitted(true);
-      setName('');
-      setMessage('');
+      // Redirect to messages page to see the new message
+      router.push('/friends/messages');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -78,28 +78,7 @@ export default function FriendsSubmitPage() {
         </div>
 
         {/* Submission Form */}
-        {submitted ? (
-          <Card className="border-2 border-sakura-200 shadow-xl">
-            <CardBody className="text-center py-16 px-8">
-              <CheckCircle2 className="w-16 h-16 text-sakura-500 mx-auto mb-4" />
-              <h2 className="text-2xl font-serif font-bold text-gray-800 mb-3">
-                Message Sent! 🎉
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Thank you for your birthday wishes! Your message is now live on Stella's birthday page.
-              </p>
-              <Button
-                color="default"
-                variant="flat"
-                className="bg-sakura-100 text-sakura-700 font-semibold"
-                onPress={() => setSubmitted(false)}
-              >
-                Send Another Message
-              </Button>
-            </CardBody>
-          </Card>
-        ) : (
-          <Card className="border-2 border-sakura-200 shadow-xl">
+        <Card className="border-2 border-sakura-200 shadow-xl">
             <CardHeader className="flex-col items-start px-6 pt-6 pb-4 border-b-2 border-sakura-100">
               <h2 className="text-xl font-serif font-bold text-gray-800">Your Birthday Message</h2>
               <p className="text-sm text-gray-500">Fill out the form below to send your wishes</p>
@@ -155,7 +134,6 @@ export default function FriendsSubmitPage() {
               </form>
             </CardBody>
           </Card>
-        )}
 
         {/* Info Box */}
         <div className="mt-8 bg-white rounded-xl border-2 border-sakura-100 p-6 shadow-md">
