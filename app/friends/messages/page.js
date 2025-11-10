@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Card, CardBody, Spinner, Chip } from '@heroui/react';
 import { Heart, Users } from 'lucide-react';
 import NavigationBar from '../../components/Navbar';
 
-export default function FriendsMessagesPage() {
+function FriendsMessagesContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [messages, setMessages] = useState([]);
@@ -169,5 +169,17 @@ export default function FriendsMessagesPage() {
         )}
       </main>
     </div>
+  );
+}
+
+export default function FriendsMessagesPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-sakura-50/30 flex items-center justify-center">
+        <Spinner size="lg" color="default" />
+      </div>
+    }>
+      <FriendsMessagesContent />
+    </Suspense>
   );
 }
