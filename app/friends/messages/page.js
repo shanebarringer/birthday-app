@@ -1,11 +1,14 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { Card, CardBody, Spinner, Chip } from '@heroui/react';
 import { Heart, Users } from 'lucide-react';
 import NavigationBar from '../../components/Navbar';
 
 export default function FriendsMessagesPage() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -29,23 +32,24 @@ export default function FriendsMessagesPage() {
     }
   }, []);
 
+  // Refetch data whenever the pathname or search params change (navigation)
   useEffect(() => {
     fetchMessages();
+  }, [pathname, searchParams, fetchMessages]);
 
-    // Refetch when page becomes visible (e.g., when navigating back to this page)
+  // Also refetch when page becomes visible or gains focus
+  useEffect(() => {
     const handleVisibilityChange = () => {
       if (!document.hidden) {
         fetchMessages();
       }
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    // Refetch when window regains focus
     const handleFocus = () => {
       fetchMessages();
     };
 
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('focus', handleFocus);
 
     return () => {
