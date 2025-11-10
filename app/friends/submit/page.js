@@ -154,10 +154,10 @@ export default function FriendsSubmitPage() {
                   color="default"
                   size="lg"
                   isLoading={isSubmitting}
-                  className="w-full bg-sakura-500 text-white font-semibold text-base hover:bg-sakura-600"
-                  startContent={!isSubmitting && <Send className="w-5 h-5" />}
+                  className="w-full bg-sakura-500 text-white font-semibold text-base hover:bg-sakura-600 flex items-center justify-center"
+                  startContent={!isSubmitting && <Send className="w-5 h-5 flex-shrink-0" />}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Birthday Message'}
+                  <span className="flex-1 text-center">{isSubmitting ? 'Sending...' : 'Send Birthday Message'}</span>
                 </Button>
               </form>
             </CardBody>
