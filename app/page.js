@@ -12,7 +12,7 @@ const messages = [
   "You're fully present at every movie and concert we see together - you're my favorite person to share these moments with.",
   "You're a fantastic communicator, and our adult friends don't just see you as our kid - they consider you a friend.",
   "I learn from you all the time - you've taught me about etiquette, pop culture, music, and so many other things over the years.",
-  "You're a truly wonderful daughter, and I appreciate who you are and who you're becoming.",
+  "You're a truly wonderful daughter, and I appreciate who you are in this moment.",
   "I appreciate your curiosity and thoughtfulness.",
   "You're a good friend to those in your life - you've done this in every city and continue to maintain good friendships.",
   "You're incredibly adaptable - especially with this last move to Denver, you haven't just weathered it, you've thrived.",
@@ -182,7 +182,7 @@ export default function BirthdayHearts() {
             </h1>
 
             {showTitle ? (
-              <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto mb-6">
+              <p className="text-base sm:text-xl text-gray-600 max-w-xl mx-auto mb-6">
                 Each envelope contains a heartfelt message just for you.
                 Click to open them and feel the love ♡
               </p>
